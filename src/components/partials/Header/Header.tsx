@@ -5,7 +5,7 @@ export const HeaderArea = styled.div`
   height: 60px;
   border-bottom: 1px solid #ccc;
   .container {
-    max-width: 1200px;
+    max-width: 80%;
     margin: auto;
     display: flex;
   }
