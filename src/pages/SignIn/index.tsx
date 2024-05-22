@@ -1,21 +1,34 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
   PageContainer,
   PageTitle,
 } from "../../components/MainComponents/MainComponents";
 import { PageArea } from "./styled";
 import { useState } from "react";
+import OlxApi from '../../helpers/OlxApi';
+import { doLogin } from "../../helpers/authHandlers";
 
 export default function SignIn() {
+  const api = OlxApi();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberPassword, setRememberPassword] = useState('');
   const [disabled, setDisabled] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     setDisabled(true);
     
+    const json = await api.login(email, password);
+
+    if (json.error) {
+      setError(json.error);
+    }
+    else {
+      doLogin(json.token, rememberPassword);      
+      <Redirect to="/" />
+    }
   }
 
   return (
