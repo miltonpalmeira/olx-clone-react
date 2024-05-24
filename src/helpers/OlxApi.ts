@@ -1,5 +1,5 @@
 import { NavigateFunction } from "react-router-dom";
-import { ISignIn } from "../types/index";
+import { ILogin } from "../types/index";
 import Cookies from "js-cookie";
 import qs from "qs";
 
@@ -7,13 +7,15 @@ const BASE_API = process.env.REACT_APP_BASE_API;
 
 const apiFetchPost = async (
   endpoint: string,
-  body: ISignIn,
+  body: ILogin,
   navigate: NavigateFunction
 ) => {
   if (!body.token) {
     let token = Cookies.get("token");
     if (token) body.token = token;
   }
+  console.log('body');
+  console.log(body);
   const res = await fetch(BASE_API + endpoint, {
     method: "POST",
     headers: {
@@ -64,6 +66,25 @@ const OlxApi = {
       {
         email,
         password,
+      },
+      navigate
+    );
+    return json;
+  },
+
+  getStates: async (navigate: NavigateFunction) => {
+    const json = await apiFetchGet("/states", {}, navigate);
+    return json.states;
+  },
+
+  register: async (data: ILogin, navigate: NavigateFunction) => {
+    const json = await apiFetchPost(
+      "/user/signup",
+      {
+        name: data.name,
+        state: data.state,
+        email: data.email,
+        password: data.password,
       },
       navigate
     );

@@ -21,9 +21,9 @@ export default function SignIn() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setDisabled(true);
+    setError('');
     const json = await api.login(email, password, navigate);
     if (json.error) {
-      console.log(json.error.msg);
       setError(json.error.msg);
       setDisabled(false);
     } else {
