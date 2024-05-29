@@ -1,11 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { PageContainer } from "../../components/MainComponents/MainComponents";
+import { SearchArea, PageArea } from "./styled";
+import { useState } from "react";
+import OlxApi from "../../helpers/OlxApi";
 
 export default function Home() {
-  return (
-    <div>
-      <h1>Página Inicial</h1>
+  const api = OlxApi();
+  const navigate = useNavigate();
 
-      <Link to={`/about`}>Sobre</Link>
-    </div>
+  return (
+    <>
+      <SearchArea>
+        <PageContainer>
+          <div className="searchBox">
+            <form action="/ads" method="GET">
+              <input type="text" name="" id="" />
+            </form>
+          </div>
+        </PageContainer>
+      </SearchArea>
+      <PageContainer>
+        <PageArea>...</PageArea>
+        <Link to={`/`}>Home</Link>
+      </PageContainer>
+    </>
   );
 }
