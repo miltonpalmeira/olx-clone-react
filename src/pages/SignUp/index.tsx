@@ -1,24 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ErrorMessage,
   PageContainer,
   PageTitle,
-} from "../../components/MainComponents/MainComponents";
-import { PageArea } from "./styled";
-import { useState, useEffect } from "react";
-import OlxApi from "../../helpers/OlxApi";
-import { doLogin } from "../../helpers/authHandlers";
-import { StateListItem } from "../../types";
+} from '../../components/MainComponents/MainComponents';
+import { PageArea, RedirectSignInArea } from './styled';
+import { useState, useEffect } from 'react';
+import OlxApi from '../../helpers/OlxApi';
+import { doLogin } from '../../helpers/authHandlers';
+import { StateListItem } from '../../types';
 
 export default function SignUp() {
   const api = OlxApi();
-  const [name, setName] = useState("");
-  const [stateLoc, setStateLoc] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [stateLoc, setStateLoc] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [disabled, setDisabled] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [stateList, setStateList] = useState<StateListItem[]>([]);
   const navigate = useNavigate();
 
@@ -33,13 +33,12 @@ export default function SignUp() {
   const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setDisabled(true);
-    setError("");
+    setError('');
     if (password !== confirmPassword) {
-      setError("Senhas não coincidem");
+      setError('Senhas não coincidem');
       setDisabled(false);
       return;
     }
-    console.log({ name, email, password, stateLoc });
     const json = await api.register(
       { name, email, password, state: stateLoc },
       navigate
@@ -50,7 +49,7 @@ export default function SignUp() {
       setDisabled(false);
     } else {
       doLogin(json.token);
-      navigate("/");
+      navigate('/');
     }
   };
 
@@ -60,11 +59,11 @@ export default function SignUp() {
       <PageArea>
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <form onSubmit={handleSubmit}>
-          <label className="area">
-            <div className="area--title">Nome Completo</div>
-            <div className="area--input">
+          <label className='area'>
+            <div className='area--title'>Nome Completo</div>
+            <div className='area--input'>
               <input
-                type="text"
+                type='text'
                 disabled={disabled}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -72,15 +71,15 @@ export default function SignUp() {
               />
             </div>
           </label>
-          <label className="area">
-            <div className="area--title">Estado</div>
-            <div className="area--input">
+          <label className='area'>
+            <div className='area--title'>Estado</div>
+            <div className='area--input'>
               <select
                 value={stateLoc}
                 onChange={(e) => setStateLoc(e.target.value)}
                 required
               >
-                <option value=""></option>
+                <option value=''></option>
                 {stateList.map((s, k) => (
                   <option key={k} value={s.name}>
                     {s.name}
@@ -89,11 +88,11 @@ export default function SignUp() {
               </select>
             </div>
           </label>
-          <label className="area">
-            <div className="area--title">Email</div>
-            <div className="area--input">
+          <label className='area'>
+            <div className='area--title'>Email</div>
+            <div className='area--input'>
               <input
-                type="email"
+                type='email'
                 disabled={disabled}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -101,11 +100,11 @@ export default function SignUp() {
               />
             </div>
           </label>
-          <label className="area">
-            <div className="area--title">Senha</div>
-            <div className="area--input">
+          <label className='area'>
+            <div className='area--title'>Senha</div>
+            <div className='area--input'>
               <input
-                type="password"
+                type='password'
                 required
                 disabled={disabled}
                 value={password}
@@ -113,11 +112,11 @@ export default function SignUp() {
               />
             </div>
           </label>
-          <label className="area">
-            <div className="area--title">Confirmar Senha</div>
-            <div className="area--input">
+          <label className='area'>
+            <div className='area--title'>Confirmar Senha</div>
+            <div className='area--input'>
               <input
-                type="password"
+                type='password'
                 required
                 disabled={disabled}
                 value={confirmPassword}
@@ -125,14 +124,17 @@ export default function SignUp() {
               />
             </div>
           </label>
-          <label className="area">
-            <div className="area--title"></div>
-            <div className="area--input">
-              <button type="submit" disabled={disabled}>
+          <label className='area'>
+            <div className='area--title'></div>
+            <div className='area--input'>
+              <button type='submit' disabled={disabled}>
                 Cadastrar
               </button>
             </div>
           </label>
+          <RedirectSignInArea>
+            Já possui uma conta?<Link to={`/signin`} style={{marginLeft: '4px'}}>Entrar</Link>
+          </RedirectSignInArea>
         </form>
       </PageArea>
       <Link to={`/`}>Home</Link>

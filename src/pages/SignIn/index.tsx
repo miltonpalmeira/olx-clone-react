@@ -4,7 +4,7 @@ import {
   PageContainer,
   PageTitle,
 } from "../../components/MainComponents/MainComponents";
-import { PageArea } from "./styled";
+import { PageArea, RedirectSignUpArea } from "./styled";
 import { useState } from "react";
 import OlxApi from "../../helpers/OlxApi";
 import { doLogin } from "../../helpers/authHandlers";
@@ -84,9 +84,11 @@ export default function SignIn() {
               </button>
             </div>
           </label>
+          <RedirectSignUpArea>
+            Não tem uma conta?<Link to={`/signup`} style={{marginLeft: '4px'}}>Cadastre-se</Link>
+          </RedirectSignUpArea>
         </form>
       </PageArea>
-      <Link to={`/`}>Home</Link>
     </PageContainer>
   );
 }
