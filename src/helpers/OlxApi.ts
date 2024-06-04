@@ -90,6 +90,16 @@ const OlxApi = {
     );
     return json;
   },
+
+  getCategories: async (navigate: NavigateFunction) => {
+    const json = await apiFetchGet('/categories', {}, navigate);
+    return json.categories;
+  },
+  
+  getAds: async (options: any, navigate: NavigateFunction) => {
+    const json = await apiFetchGet('/ad/list', options, navigate);
+    return json;
+  }
 };
 
 export default () => OlxApi;
