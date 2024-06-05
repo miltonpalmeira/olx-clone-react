@@ -39,6 +39,7 @@ export default function Home() {
         },
         navigate
       );
+      console.log(json);
       setAdList(json.ads);
     };
     getRecentAds();

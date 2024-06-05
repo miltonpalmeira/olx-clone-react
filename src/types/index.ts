@@ -16,3 +16,11 @@ export interface CategoryList {
     img: string;
     slug: string;
 }
+export interface OptionsQueryAds {
+    sort?: string;
+    offset?: number;
+    limit?: number;
+    q?: string;
+    category?: string;
+    token?: string;
+}
