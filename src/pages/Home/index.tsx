@@ -3,7 +3,7 @@ import { PageContainer } from '../../components/MainComponents/MainComponents';
 import { SearchArea, PageArea } from './styled';
 import { useEffect, useState } from 'react';
 import OlxApi from '../../helpers/OlxApi';
-import { StateListItem } from '../../types';
+import { CategoryList, StateListItem } from '../../types';
 import AdItem from '../../components/partials/AdItem/AdItem';
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
   const navigate = useNavigate();
 
   const [stateList, setStateList] = useState<StateListItem[]>([]);
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<CategoryList[]>([]);
   const [adList, setAdList] = useState([]);
 
   useEffect(() => {
@@ -62,14 +62,14 @@ export default function Home() {
               <button>Pesquisar</button>
             </form>
           </div>
-          {/* <div className='categoryList'>
+          <div className='categoryList'>
             {categories.map((i, k) => (
               <Link key={k} to={`/ads?cat=${i.slug}`} className='categoryItem'>
                 <img src={i.img} alt="" />
                 <span>{i.name}</span>
               </Link>
             ))}
-          </div> */}
+          </div>
         </PageContainer>
       </SearchArea>
       <PageContainer>

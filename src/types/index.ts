@@ -10,3 +10,9 @@ export interface StateListItem {
     id: number;
     name: string;
 }
+export interface CategoryList {
+    id: number;
+    name: string;
+    img: string;
+    slug: string;
+}
