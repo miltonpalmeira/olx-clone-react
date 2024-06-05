@@ -33,6 +33,10 @@ export const PageArea = styled.div`
     }
     .adName {
       padding: 10px;
+
+      .adCreated {
+        color: #3C4453;
+      }
     }
     .adInfo {
       padding: 10px;

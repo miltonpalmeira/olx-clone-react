@@ -98,15 +98,13 @@ const OlxApi = {
 
   getAds: async (options: OptionsQueryAds, navigate: NavigateFunction) => {
     const json = await apiFetchGet("/ads/list", options, navigate);
-    console.log("json olxapi");
-    console.log(json);
     return json;
   },
 
   getAd: async (id: string | undefined, other = false, navigate: NavigateFunction) => {
-    const json = await apiFetchGet("/ad/item", { id, other }, navigate);
+    const json = await apiFetchGet(`/ad/${id}`, { id, other }, navigate);
     return json;
-  },
+  },  
 };
 
 export default () => OlxApi;
