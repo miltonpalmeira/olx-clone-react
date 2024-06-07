@@ -3,13 +3,15 @@ import styled from 'styled-components';
 export const Item = styled.div`
   a {
     display: block;
-    border: 1px solid #fff;
+    border: 1px solid #ccc;
     margin: 10px;
     text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     color: #000;
-    background-color: #eee;
+
+    .itemData {
+      padding: 20px;
+    }
 
     &:hover img {
       transform: scale(1.1);
@@ -20,6 +22,7 @@ export const Item = styled.div`
 
     .itemImage {
       overflow: hidden;
+      margin-bottom: 10px;
     }
 
     .itemImage img {
@@ -27,8 +30,9 @@ export const Item = styled.div`
       border-radius: 5px;
     }
 
-    .itemName {
+    .itemPrice {
       font-weight: bold;
+      margin-bottom: 15px;
     }
   }
 `;

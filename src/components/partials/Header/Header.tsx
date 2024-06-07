@@ -55,7 +55,7 @@ export const HeaderArea = styled.div`
     }
 
     li {
-      margin-left: 20px;
+      margin-left: 15px;
       margin-right: 10px;
 
       a, button {

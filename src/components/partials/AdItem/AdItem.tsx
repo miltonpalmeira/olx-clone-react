@@ -6,19 +6,20 @@ export default function AdItem(props: any) {
 
   if (props.data.priceNegotiable) {
     price = 'Preço Negociável';
-  }
-  else {
+  } else {
     price = `R$ ${props.data.price}`;
   }
-  
+
   return (
-    <Item className="aditem">
+    <Item className='aditem'>
       <Link to={`/ad/${props.data.id}`}>
         <div className='itemImage'>
-          <img src={props.data.image} alt="" />
+          <img src={props.data.image} alt='' />
         </div>
-        <div className='itemName'>{props.data.title}</div>
-        <div className='itemPrice'>{price}</div>
+        <div className='itemData'>
+          <div className='itemPrice'>{price}</div>
+          <div className='itemName'>{props.data.title}</div>
+        </div>
       </Link>
     </Item>
   );
