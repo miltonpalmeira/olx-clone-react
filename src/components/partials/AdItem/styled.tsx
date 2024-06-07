@@ -9,13 +9,17 @@ export const Item = styled.div`
     padding: 10px;
     border-radius: 5px;
     color: #000;
-    background-color: #fff;
+    background-color: #eee;
 
     &:hover img {
       transform: scale(1.1);
       transition: transform 0.3s ease-in-out;
       border: 1px solid #ccc;
       background-color: #eee;
+    }
+
+    .itemImage {
+      overflow: hidden;
     }
 
     .itemImage img {
