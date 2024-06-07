@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import OlxApi from '../../helpers/OlxApi';
 import { AdInfoList } from '../../types';
 import { DateFormat } from '../../utils/DateUtils';
+import PriceTag from '../../components/partials/PriceTag';
 
 export default function AdPage() {
   const api = OlxApi();
@@ -36,8 +37,7 @@ export default function AdPage() {
               {adInfo.title && <h2>{adInfo.title}</h2>}
               {adInfo.dateCreated && (
                 <small className='adCreated'>
-                  Publicado em{' '}
-                  {DateFormat(adInfo.dateCreated)}
+                  Publicado em {DateFormat(adInfo.dateCreated)}
                 </small>
               )}
             </div>
@@ -48,14 +48,13 @@ export default function AdPage() {
                 {loading && <Fake height={100} />}
                 {adInfo.description}
                 <hr />
-                {adInfo.views &&
-                  <small>Visualizações: {adInfo.views}</small>
-                }
+                {adInfo.views && <small>Visualizações: {adInfo.views}</small>}
               </div>
             </div>
           </div>
         </div>
         <div className='rightSide'>
+          <PriceTag price={adInfo.price || 0} />
           <div className='box box--padding'>
             {loading && <Fake height={20} />}
           </div>

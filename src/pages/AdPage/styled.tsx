@@ -27,19 +27,18 @@ export const PageArea = styled.div`
   .leftSide {
     flex: 1;
     margin-right: 20px;
-    padding: 10px;
     .adImage {
-      padding: 10px;
+      padding: 20px;
     }
     .adName {
-      padding: 10px;
+      padding: 20px;
 
       .adCreated {
         color: #3C4453;
       }
     }
     .adInfo {
-      padding: 10px;
+      padding: 20px;
       .adPrice {
         margin-bottom: 20px;
       }
