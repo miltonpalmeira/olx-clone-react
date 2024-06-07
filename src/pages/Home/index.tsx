@@ -3,7 +3,7 @@ import { PageContainer } from '../../components/MainComponents/MainComponents';
 import { SearchArea, PageArea } from './styled';
 import { useEffect, useState } from 'react';
 import OlxApi from '../../helpers/OlxApi';
-import { CategoryList, StateListItem } from '../../types';
+import { CategoryList, PropsAdItem, StateListItem } from '../../types';
 import AdItem from '../../components/partials/AdItem/AdItem';
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
 
   const [stateList, setStateList] = useState<StateListItem[]>([]);
   const [categories, setCategories] = useState<CategoryList[]>([]);
-  const [adList, setAdList] = useState([]);
+  const [adList, setAdList] = useState<PropsAdItem[]>([]);
 
   useEffect(() => {
     const getStates = async () => {
@@ -39,7 +39,6 @@ export default function Home() {
         },
         navigate
       );
-      console.log(json);
       setAdList(json.ads);
     };
     getRecentAds();
@@ -81,7 +80,7 @@ export default function Home() {
               <AdItem key={k} data={i} />
             ))}
           </div>
-          <Link to={`/ads`} className='seeAllLink'>Ver todos</Link>
+          <Link to={`/ads`} className='seeAllLinks'>Ver todos</Link>
         </PageArea>
         <Link to={`/`}>Home</Link>
       </PageContainer>

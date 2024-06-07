@@ -43,3 +43,13 @@ export interface AdInfoList {
     email: string;
   };
 }
+
+export interface PropsAdItem {
+  id: number;
+  title: string;
+  state: string;
+  price: number;
+  priceNegotiable: boolean;
+  image: string;
+  dateCreated: string;
+}

@@ -7,6 +7,7 @@ import { PageArea, Fake } from './styled';
 import { useEffect, useState } from 'react';
 import OlxApi from '../../helpers/OlxApi';
 import { AdInfoList } from '../../types';
+import { DateFormat } from '../../utils/DateUtils';
 
 export default function AdPage() {
   const api = OlxApi();
@@ -36,8 +37,7 @@ export default function AdPage() {
               {adInfo.dateCreated && (
                 <small className='adCreated'>
                   Publicado em{' '}
-                  {new Date(adInfo.dateCreated).toLocaleDateString()} às{' '}
-                  {new Date(adInfo.dateCreated).toLocaleTimeString([], {timeStyle: 'short'})}
+                  {DateFormat(adInfo.dateCreated)}
                 </small>
               )}
             </div>
