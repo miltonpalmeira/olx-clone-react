@@ -42,6 +42,7 @@ export interface AdInfoList {
     name: string;
     email: string;
   };
+  images?: []
 }
 
 export interface PropsAdItem {
@@ -52,4 +53,8 @@ export interface PropsAdItem {
   priceNegotiable: boolean;
   image: string;
   dateCreated: string;
+}
+
+export interface CarouselProps {
+  adInfo: AdInfoList;
 }

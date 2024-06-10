@@ -29,6 +29,10 @@ export const PageArea = styled.div`
     margin-right: 20px;
     .adImage {
       padding: 20px;
+      width: 450px;
+      height: 420px;
+      margin-right: 20px;
+      margin-left: 20px;
     }
     .adName {
       padding: 20px;
@@ -48,6 +52,10 @@ export const PageArea = styled.div`
   }
 
   .rightSide {
-    width: 250px;
+    width: 300px;
+  }
+  
+  .adSide {
+    width: 100px;
   }
 `;
