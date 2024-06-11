@@ -52,7 +52,7 @@ export const PageArea = styled.div`
   }
 
   .rightSide {
-    width: 300px;
+    width: 30%;
   }
   
   .adSide {

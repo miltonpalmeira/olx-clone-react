@@ -1,19 +1,15 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
-import {
-  ErrorMessage,
-  PageContainer,
-} from "../../components/MainComponents/MainComponents";
-import { PageArea, Fake } from "./styled";
-import { useEffect, useState } from "react";
-import OlxApi from "../../helpers/OlxApi";
-import { AdInfoList } from "../../types";
-import { DateFormat } from "../../utils/DateUtils";
-import PriceTag from "../../components/partials/PriceTag";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import ImageCarousel from "../../components/partials/Carousel";
-import ContactForm from "../../components/partials/ContactForm";
+import { useNavigate, useParams } from 'react-router-dom';
+import { PageContainer } from '../../components/MainComponents/MainComponents';
+import { PageArea, Fake } from './styled';
+import { useEffect, useState } from 'react';
+import OlxApi from '../../helpers/OlxApi';
+import { AdInfoList } from '../../types';
+import { DateFormat } from '../../utils/DateUtils';
+import PriceTag from '../../components/partials/PriceTag';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import ImageCarousel from '../../components/partials/Carousel';
+import ContactForm from '../../components/partials/ContactForm';
 
 export default function AdPage() {
   const api = OlxApi();
@@ -22,14 +18,6 @@ export default function AdPage() {
 
   const [loading, setLoading] = useState(true);
   const [adInfo, setAdInfo] = useState<AdInfoList>({});
-
-  // const settings = {
-  //   dots: adInfo.images?.length > 1,
-  //   infinite: adInfo.images?.length > 1,
-  //   speed: 500,
-  //   slidesToShow: Math.min(adInfo.images?.length, 1),
-  //   slidesToScroll: 1
-  // };
 
   useEffect(() => {
     const getAdInfo = async (adId: string | undefined) => {
@@ -43,24 +31,24 @@ export default function AdPage() {
   return (
     <PageContainer>
       <PageArea>
-        <div className="leftSide">
-          <div className="box">
-            <div className="adName">
+        <div className='leftSide'>
+          <div className='box'>
+            <div className='adName'>
               {loading && <Fake height={20} />}
               {adInfo.title && <h2>{adInfo.title}</h2>}
               {adInfo.dateCreated && (
-                <small className="adCreated">
+                <small className='adCreated'>
                   Publicado em {DateFormat(adInfo.dateCreated)}
                 </small>
               )}
             </div>
-            <div className="adImage">
+            <div className='adImage'>
               {loading && <Fake height={300} />}
               {adInfo.images && <ImageCarousel adInfo={adInfo} />}
             </div>
-            <div className="adInfo">
-              <div className="adPrice">{loading && <Fake height={20} />}</div>
-              <div className="adDescription">
+            <div className='adInfo'>
+              <div className='adPrice'>{loading && <Fake height={20} />}</div>
+              <div className='adDescription'>
                 {loading && <Fake height={100} />}
                 {adInfo.description}
                 <hr />
@@ -69,17 +57,16 @@ export default function AdPage() {
             </div>
           </div>
         </div>
-        <div className="rightSide">
-          <div className="box box--padding" style={{ backgroundColor: "none" }}>
+        <div className='rightSide'>
+          <div className='box box--padding' style={{ backgroundColor: 'none' }}>
             {loading && <Fake height={20} />}
             <PriceTag price={adInfo.price || 0} />
           </div>
-          <div className="box box--padding">
+          <div className='box box--padding'>
             {loading && <Fake height={50} />}
             <ContactForm />
           </div>
         </div>
-        <div className="adSide"></div>
       </PageArea>
     </PageContainer>
   );
