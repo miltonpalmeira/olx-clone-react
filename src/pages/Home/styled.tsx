@@ -7,7 +7,8 @@ export const SearchArea = styled.div`
 
   .searchBox {
     /* background-color: #ee9637; */
-    background-color: #9bb83c;
+    /* background-color: #9bb83c; */
+    background-color: #6E0AD6;
     padding: 20px 15px;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 0.3 rgba(0, 0, 0, 0.2);

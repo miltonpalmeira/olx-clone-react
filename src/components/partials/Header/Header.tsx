@@ -62,7 +62,7 @@ export const HeaderArea = styled.div`
         border: 0;
         background: none;
         color: #000;
-        font-size: 18px;
+        font-size: 16px;
         cursor: pointer;
         outline: 0;
         &:hover {

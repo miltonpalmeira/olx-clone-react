@@ -59,3 +59,12 @@ export const PageArea = styled.div`
     width: 100px;
   }
 `;
+
+export const PriceArea = styled.div`
+  background-color: #6A0DAD;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  padding: 15px;
+  color: #fff;
+  font-size: 26px;
+`;

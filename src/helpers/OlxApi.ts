@@ -128,10 +128,14 @@ const OlxApi = {
     const json = await apiFetchGet(`/ad/${id}`, { id, other }, navigate);
     return json;
   },
-  addAd: async (fData: any) => {
+  addAd: async (fData: FormData) => {
     const json = await apiFetchFile('/ads/add', fData);
     return json;
   },
+  getUserByToken: async (token: string | undefined, navigate: NavigateFunction) => {
+    const json = await apiFetchGet('/user/me', { token }, navigate);
+    return json;
+  }
   // getToken: async () => {
   //   const json = await apiFetchGet('/user/me');
   //   return json;

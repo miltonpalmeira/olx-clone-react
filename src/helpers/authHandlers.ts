@@ -5,6 +5,11 @@ export const isLogged = () => {
     return (token) ? true : false;
 }
 
+export const returnToken = () => {
+    let token = Cookies.get('token');
+    return token;
+}
+
 export const doLogin = (token: string, rememberPassword = false) => {
     if (rememberPassword) {
         Cookies.set('token', token, { expires: 365 });
