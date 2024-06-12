@@ -8,6 +8,7 @@ import SignUp from "./pages/SignUp";
 import AdPage from "./pages/AdPage";
 import AddAd from './pages/AddAd';
 import ListAds from "./pages/ListAds";
+import MyAccount from "./pages/MyAccount";
 
 export default function AppRoutes() {
   return (
@@ -19,6 +20,7 @@ export default function AppRoutes() {
       <Route path="/ad/:id" element={<AdPage />} />
       <Route path="/post-an-ad" element={<AddAd />} />
       <Route path="/ads" element={<ListAds/>}/>
+      <Route path="/my-account" element={<MyAccount/>}/>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

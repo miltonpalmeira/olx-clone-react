@@ -60,7 +60,14 @@ export interface CarouselProps {
   adInfo: AdInfoList;
 }
 
-export type StateList = {
-  id: string,
-  name: string
+export interface StateList {
+  id: string;
+  name: string;
+}
+
+export interface UserInfo {
+  name: string;
+  email: string;
+  state: string;
+  image: string;
 }

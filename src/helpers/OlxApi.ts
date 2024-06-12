@@ -1,7 +1,7 @@
-import { NavigateFunction } from 'react-router-dom';
-import { ILogin, OptionsQueryAds } from '../types/index';
-import Cookies from 'js-cookie';
-import qs from 'qs';
+import { NavigateFunction } from "react-router-dom";
+import { ILogin, OptionsQueryAds } from "../types/index";
+import Cookies from "js-cookie";
+import qs from "qs";
 
 const BASE_API = process.env.REACT_APP_BASE_API;
 
@@ -32,21 +32,21 @@ const apiFetchPost = async (
   navigate: NavigateFunction
 ) => {
   if (!body.token) {
-    let token = Cookies.get('token');
+    let token = Cookies.get("token");
     if (token) body.token = token;
   }
   const res = await fetch(BASE_API + endpoint, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(body),
   });
   const json = await res.json();
 
   if (json.notAllowed) {
-    navigate('/signin');
+    navigate("/signin");
     return;
   }
 
@@ -59,7 +59,7 @@ const apiFetchGet = async (
   navigate: NavigateFunction
 ) => {
   if (!body.token) {
-    let token = Cookies.get('token');
+    let token = Cookies.get("token");
     if (token) body.token = token;
   }
   console.log(`${BASE_API + endpoint}?${qs.stringify(body)}`);
@@ -68,7 +68,7 @@ const apiFetchGet = async (
   const json = await res.json();
 
   if (json.notAllowed) {
-    navigate('/signin');
+    navigate("/signin");
     return;
   }
 
@@ -82,7 +82,7 @@ const OlxApi = {
     navigate: NavigateFunction
   ) => {
     const json = await apiFetchPost(
-      '/user/signin',
+      "/user/signin",
       {
         email,
         password,
@@ -93,13 +93,13 @@ const OlxApi = {
   },
 
   getStates: async (navigate: NavigateFunction) => {
-    const json = await apiFetchGet('/states', {}, navigate);
+    const json = await apiFetchGet("/states", {}, navigate);
     return json.states;
   },
 
   register: async (data: ILogin, navigate: NavigateFunction) => {
     const json = await apiFetchPost(
-      '/user/signup',
+      "/user/signup",
       {
         name: data.name,
         state: data.state,
@@ -112,13 +112,13 @@ const OlxApi = {
   },
 
   getCategories: async (navigate: NavigateFunction) => {
-    const json = await apiFetchGet('/categories', {}, navigate);
+    const json = await apiFetchGet("/categories", {}, navigate);
     return json.categories;
   },
 
   getAds: async (options: OptionsQueryAds, navigate: NavigateFunction) => {
     console.log(options);
-    const json = await apiFetchGet('/ads/list', options, navigate);
+    const json = await apiFetchGet("/ads/list", options, navigate);
     return json;
   },
 
@@ -131,22 +131,24 @@ const OlxApi = {
     return json;
   },
   addAd: async (fData: FormData) => {
-    const json = await apiFetchFile('/ads/add', fData);
+    const json = await apiFetchFile("/ads/add", fData);
     return json;
   },
-  getUserByToken: async (token: string | undefined, navigate: NavigateFunction) => {
-    const json = await apiFetchGet('/user/me', { token }, navigate);
+  getUserByToken: async (
+    token: string | undefined,
+    navigate: NavigateFunction
+  ) => {
+    const json = await apiFetchGet("/user/me", { token }, navigate);
     return json;
-  }
-  // getToken: async () => {
-  //   const json = await apiFetchGet('/user/me');
-  //   return json;
-  // },
-
-  // unRegister: async () => {
-  //   const json = await apiFetchPut('/user/me');
-  //   return json;
-  // },
+  },
+  getUserInfo: async (navigate: NavigateFunction) => {
+    const json = await apiFetchGet("/user/me", {}, navigate);
+    return json;
+  },
+  editUser: async (fData: FormData) => {
+    const json = await apiFetchFile("/user/edit", fData);
+    return json;
+  },
 };
 
 export default () => OlxApi;
