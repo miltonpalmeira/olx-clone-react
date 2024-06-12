@@ -62,6 +62,7 @@ const apiFetchGet = async (
     let token = Cookies.get('token');
     if (token) body.token = token;
   }
+  console.log(`${BASE_API + endpoint}?${qs.stringify(body)}`);
   const res = await fetch(`${BASE_API + endpoint}?${qs.stringify(body)}`);
 
   const json = await res.json();
@@ -116,6 +117,7 @@ const OlxApi = {
   },
 
   getAds: async (options: OptionsQueryAds, navigate: NavigateFunction) => {
+    console.log(options);
     const json = await apiFetchGet('/ads/list', options, navigate);
     return json;
   },

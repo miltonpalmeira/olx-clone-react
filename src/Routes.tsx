@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import AdPage from "./pages/AdPage";
 import AddAd from './pages/AddAd';
+import ListAds from "./pages/ListAds";
 
 export default function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ export default function AppRoutes() {
       <Route path="/signup" element={<SignUp />} />
       <Route path="/ad/:id" element={<AdPage />} />
       <Route path="/post-an-ad" element={<AddAd />} />
+      <Route path="/ads" element={<ListAds/>}/>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

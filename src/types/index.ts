@@ -22,6 +22,7 @@ export interface OptionsQueryAds {
   limit?: number;
   q?: string;
   category?: string;
+  state?: string;
   token?: string;
 }
 
@@ -57,4 +58,9 @@ export interface PropsAdItem {
 
 export interface CarouselProps {
   adInfo: AdInfoList;
+}
+
+export type StateList = {
+  id: string,
+  name: string
 }

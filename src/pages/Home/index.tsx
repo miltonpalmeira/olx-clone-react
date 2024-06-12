@@ -80,9 +80,8 @@ export default function Home() {
               <AdItem key={k} data={i} />
             ))}
           </div>
-          <Link to={`/ads`} className='seeAllLinks'>Ver todos</Link>
+          <Link to={`/ads`} className='seeAllLink'>Ver todos</Link>
         </PageArea>
-        <Link to={`/`}>Home</Link>
       </PageContainer>
     </>
   );

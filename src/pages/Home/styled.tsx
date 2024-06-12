@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const SearchArea = styled.div`
   background-color: #ddd;
@@ -8,7 +8,7 @@ export const SearchArea = styled.div`
   .searchBox {
     /* background-color: #ee9637; */
     /* background-color: #9bb83c; */
-    background-color: #6E0AD6;
+    background-color: #6e0ad6;
     padding: 20px 15px;
     border-radius: 5px;
     box-shadow: 1px 1px 1px 0.3 rgba(0, 0, 0, 0.2);
@@ -64,7 +64,6 @@ export const SearchArea = styled.div`
       height: 50px;
       margin-bottom: 10px;
 
-
       &:hover {
         background-color: #eee;
       }
@@ -102,6 +101,13 @@ export const PageArea = styled.div`
     text-decoration: none;
     font-weight: bold;
     display: inline-block;
-    margin-top: 10px;
+    margin: 10px 0;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+
+    &:hover {
+      color: #9d9d9d;
+    }
   }
 `;
